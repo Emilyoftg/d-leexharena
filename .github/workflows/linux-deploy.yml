@@ -26,14 +26,14 @@ jobs:
        - name: "🧬 Clone Repository 🧬"
          continue-on-error: true
          run: |
-           git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@${{ secrets.BOT_REPO }} b-leexharena
+           git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@${{ secrets.BOT_REPO }} c-leexharena
        - name: "Running LeexhArena Server 🏃‍♂️💨💨"
          timeout-minutes: 350
          continue-on-error: true
          run: |
-           cd b-leexharena
-           docker build . -t b-leexharena
-           docker run --env CONFIG_FILE_URL=${{ secrets.CONFIG_FILE_URL }} b-leexharena
+           cd c-leexharena
+           docker build . -t c-leexharena
+           docker run --env CONFIG_FILE_URL=${{ secrets.CONFIG_FILE_URL }} c-leexharena
        - name: "♻️ Re-Run leexhArena Server ♻️"
          continue-on-error: true
          run: |
@@ -41,5 +41,5 @@ jobs:
               cd loop || exit 1
               echo $(date -u +%T%P) >> loop.txt
               git add loop.txt
-              git commit -m "b-leexharena : Re-Run $(date -u +%D-%T%P)"
-              git push -q https://${{ secrets.GIT_TOKEN }}@github.com/${GITHUB_REPOSITORY} HEAD:b-leexharena
+              git commit -m "c-leexharena : Re-Run $(date -u +%D-%T%P)"
+              git push -q https://${{ secrets.GIT_TOKEN }}@github.com/${GITHUB_REPOSITORY} HEAD:c-leexharena
